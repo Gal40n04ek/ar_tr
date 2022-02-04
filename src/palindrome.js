@@ -2,14 +2,13 @@
 
 /**
  * Check that a given string is a Palindrome.
- * @param {string} testString - any input string.
+ * @param {string} stringToCheck - any input string.
  * @return {Boolean}
  */
-function isPalindrome(testString) {
-  const length = testString.length;
-  const lengthCheck = Math.trunc(length / 2);
+function isPalindrome(stringToCheck) {
+  const lengthCheck = Math.trunc(stringToCheck.length / 2);
   for (let i = 0; i < lengthCheck; i++) {
-    if (testString[i] !== testString[length - i - 1]) {
+    if (stringToCheck[i] !== stringToCheck[stringToCheck.length - i - 1]) {
       return false;
     }
   }

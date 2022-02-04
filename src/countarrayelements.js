@@ -3,60 +3,60 @@
 /**
  * Check whether number is equal to zero.
  * @param {number} number to check
- * @return {number} 1 if true, 0 if false
+ * @return {Boolean}
  */
 function isEqualZero(number) {
   if (number === 0) {
-    return 1;
+    return true;
   }
-  return 0;
+  return false;
 }
 
 /**
  * Check whether number is Negative.
  * @param {number} number to check
- * @return {number} 1 if true, 0 if false
+ * @return {Boolean}
  */
 function isNegative(number) {
   if (number < 0) {
-    return 1;
+    return true;
   }
-  return 0;
+  return false;
 }
 
 /**
  * Check whether number is Positive.
  * @param {number} number to check
- * @return {number} 1 if true, 0 if false
+ * @return {Boolean}
  */
 function isPositive(number) {
   if (number > 0) {
-    return 1;
+    return true;
   }
-  return 0;
+  return false;
 }
 
 /**
  * Check whether number is Prime.
  * @param {number} number to check
- * @return {number} 1 if true, 0 if false
+ * @return {Boolean}
  */
 function isPrime(number) {
   if (number === 1) {
-    return 0; // Number 1 is neither prime, nor composite
+    return false; // Number 1 is neither prime, nor composite
   }
   if (number < 0 || Math.trunc(number) !== number) {
-    return 0; // The set of prime numbers - is a subset of natural numbers
+    return false; // The set of prime numbers - is a subset of natural numbers
   }
   if (number === 2) {
-    return 1; // Number 2 is prime
+    return true; // Number 2 is prime
   }
   for (let i = 2; i <= Math.trunc(Math.sqrt(number)); i++) {
     if (number % i === 0) {
-      return 0;
+      return false;
     }
   }
-  return 1;
+  return true;
 }
 
 /**
@@ -74,7 +74,9 @@ function countArrayElements(arrayGiven, conditionFunction) {
     conditionFunction = (x) => 1;
   }
   for (let i = 0; i < arrayGiven.length; i++) {
-    sum += conditionFunction(arrayGiven[i]);
+    if (conditionFunction(arrayGiven[i])) {
+      sum += 1;
+    }
   }
   return sum;
 }

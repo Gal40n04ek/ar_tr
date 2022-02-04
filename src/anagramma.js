@@ -71,10 +71,7 @@ function isAnagramma(firstString, secondString) {
   if (!compareStringLengths(baseString, comparedString)) {
     return false;
   }
-  if (!compareCharsNumber(baseString, comparedString)) {
-    return false;
-  }
-  return true;
+  return compareCharsNumber(baseString, comparedString);
 }
 
 

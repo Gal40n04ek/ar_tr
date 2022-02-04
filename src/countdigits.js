@@ -2,22 +2,22 @@
 
 /**
  * Check the input data is a digit number.
- * @param {number} number - any number.
+ * @param {number} numberToCheck - any number.
  * @return {Boolean}
  */
-function isInteger(number) {
-  return number === Math.trunc(number);
+function isInteger(numberToCheck) {
+  return numberToCheck === Math.trunc(numberToCheck);
 }
 
 /**
  * Count digits quantity in the number usin loops.
- * @param {number} number - any input number.
+ * @param {number} numberInput - any input number.
  * @return {number}
  */
-function countDigits(number) {
+function countDigits(numberInput) {
   let count = 0;
-  while (Math.abs(number) >= 1) {
-    number = number / 10;
+  while (Math.abs(numberInput) >= 1) {
+    numberInput = numberInput / 10;
     count++;
   }
   return count;
@@ -25,12 +25,12 @@ function countDigits(number) {
 
 /**
  * Count digits quantity in the input number using recursion.
- * @param {number} number - any input number.
+ * @param {number} numberInput - any input number.
  * @return {number}
  */
-function countDigitsRecursive(number) {
-  if (Math.abs(number) >= 1) {
-    return countDigitsRecursive(number/10) + 1;
+function countDigitsRecursive(numberInput) {
+  if (Math.abs(numberInput) >= 1) {
+    return countDigitsRecursive(numberInput / 10) + 1;
   } else {
     return 0;
   }
@@ -38,53 +38,53 @@ function countDigitsRecursive(number) {
 
 /**
  * Add one more number unit by multiplying the input by 10.
- * @param {number} number - any number to increase.
+ * @param {number} numberFloat - any number to increase.
  * @return {number}
  */
-function addDigitsUnit(number) {
-  return number * 10;
+function addDigitsUnit(numberFloat) {
+  return numberFloat * 10;
 }
 
 /**
  * Total count of digits in the float or integer number by recursion method.
- * @param {number} number
+ * @param {number} numberInput
  * @return {number}
  */
-function countDigitsNumbersRecursive(number) {
-  if (number === 0) {
+function countDigitsNumbersRecursive(numberInput) {
+  if (numberInput === 0) {
     return 1;
   }
 
-  if (isInteger(number)) {
-    return countDigitsRecursive(number);
+  if (isInteger(numberInput)) {
+    return countDigitsRecursive(numberInput);
   }
 
-  if (Math.abs(number) < 1) {
-    return countDigitsNumbersRecursive(addDigitsUnit(number)) + 1;
+  if (Math.abs(numberInput) < 1) {
+    return countDigitsNumbersRecursive(addDigitsUnit(numberInput)) + 1;
   }
 
-  return countDigitsNumbers(addDigitsUnit(number));
+  return countDigitsNumbers(addDigitsUnit(numberInput));
 }
 
 /**
  * Total count of digits in the float or integer number by loops method.
- * @param {number} number
+ * @param {number} numberInput
  * @return {number}
  */
-function countDigitsNumbers(number) {
-  if (number === 0) {
+function countDigitsNumbers(numberInput) {
+  if (numberInput === 0) {
     return 1;
   }
 
-  if (isInteger(number)) {
-    return countDigits(number);
+  if (isInteger(numberInput)) {
+    return countDigits(numberInput);
   }
 
-  if (Math.abs(number) < 1) {
-    return countDigitsNumbers(addDigitsUnit(number)) + 1;
+  if (Math.abs(numberInput) < 1) {
+    return countDigitsNumbers(addDigitsUnit(numberInput)) + 1;
   }
 
-  return countDigitsNumbers(addDigitsUnit(number));
+  return countDigitsNumbers(addDigitsUnit(numberInput));
 }
 
 /**

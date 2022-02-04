@@ -2,19 +2,19 @@
 
 /**
  * Check that the number is numerical and non-negative
- * @param {*} number
+ * @param {*} numberInput
  * @return {Boolean}
  */
-function validateNumber(number) {
-  if (+number !== number) {
+function validateNumber(numberInput) {
+  if (+numberInput !== numberInput) {
     return false;
   }
 
-  if (number < 0) {
+  if (numberInput < 0) {
     return false;
   }
 
-  if (number !== Math.trunc(number)) {
+  if (numberInput !== Math.trunc(numberInput)) {
     return false;
   }
 
@@ -23,17 +23,17 @@ function validateNumber(number) {
 
 /**
  * Calculate the factotial of the number using "for"-loop
- * @param {*} number
+ * @param {*} numberInput
  * @return {number} result
  */
-function calculateFactorial(number) {
-  if (!validateNumber(number)) {
+function calculateFactorial(numberInput) {
+  if (!validateNumber(numberInput)) {
     throw new Error('The argument should be a Non-negative number');
   }
 
   let result = 1;
 
-  for (let i = 1; i <= number; i++) {
+  for (let i = 1; i <= numberInput; i++) {
     result *= i;
   }
 
@@ -42,19 +42,19 @@ function calculateFactorial(number) {
 
 /**
  * Calculate the factotial of the number using recursion
- * @param {*} number
+ * @param {*} numberInput
  * @return {number} result.
  */
-function calculateFactorialRecursive(number) {
-  if (!validateNumber(number)) {
+function calculateFactorialRecursive(numberInput) {
+  if (!validateNumber(numberInput)) {
     throw new Error('The argument should be a Non-negative number');
   }
 
-  if (number === 0) {
+  if (numberInput === 0) {
     return 1;
   }
 
-  return number * calculateFactorialRecursive(number - 1);
+  return numberInput * calculateFactorialRecursive(numberInput - 1);
 }
 
 /**
@@ -63,20 +63,20 @@ function calculateFactorialRecursive(number) {
 const factorial = (function() {
   const cache = {};
 
-  return function calculateFactorialMemo(number) {
-    if (!validateNumber(number)) {
+  return function calculateFactorialMemo(numberInput) {
+    if (!validateNumber(numberInput)) {
       throw new Error('The argument should be a Non-negative number');
     }
 
-    if (number === 0) {
+    if (numberInput === 0) {
       return 1;
     }
 
-    if (cache[number] === undefined) {
-      cache[number] = calculateFactorialMemo(number - 1);
+    if (cache[numberInput] === undefined) {
+      cache[numberInput] = calculateFactorialMemo(numberInput - 1);
     }
 
-    return number * cache[number];
+    return numberInput * cache[numberInput];
   };
 })();
 
@@ -84,15 +84,15 @@ const factorial = (function() {
  * Another way to calc. the factorial of the number using the recursion and memo
  */
 
-const memoize = (fn) => {
+const memoize = (functionToMemoize) => {
   const cache = {};
   return (...args) => {
-    const n = args[0];
-    if (n in cache) {
-      return cache[n];
+    const firstArgument = args[0];
+    if (firstArgument in cache) {
+      return cache[firstArgument];
     }
-    cache[n] = fn(n);
-    return cache[n];
+    cache[firstArgument] = functionToMemoize(firstArgument);
+    return cache[firstArgument];
   };
 };
 
@@ -100,16 +100,16 @@ const memoize = (fn) => {
  * Memoize function.
  */
 const factorialMemo = memoize(
-    (number) => {
-      if (!validateNumber(number)) {
+    (numberInput) => {
+      if (!validateNumber(numberInput)) {
         throw new Error('The argument should be a Non-negative number');
       }
 
-      if (number === 0) {
+      if (numberInput === 0) {
         return 1;
       }
 
-      return number * factorialMemo(number - 1);
+      return numberInput * factorialMemo(numberInput - 1);
     },
 );
 

@@ -19,8 +19,7 @@ function castString(sentence) {
  * @return {array} of words.
  */
 function separateWords(sentence) {
-  const wordSet = sentence.split(' ');
-  return wordSet;
+  return sentence.split(' ');
 }
 
 /**

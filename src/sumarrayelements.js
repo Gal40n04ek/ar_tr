@@ -2,50 +2,50 @@
 
 /**
  * Check whether number is Even.
- * @param {number} number to check.
- * @return {number} number if true, 0 if false.
+ * @param {number} numberInput to check.
+ * @return {Boolean}
  */
-function isEven(number) {
-  if (number % 2 === 0) {
-    return number;
+function isEven(numberInput) {
+  if (numberInput % 2 === 0) {
+    return true;
   }
-  return 0;
+  return false;
 }
 
 /**
  * Check whether number is Odd.
- * @param {number} number to check.
- * @return {number} number if true, 0 if false.
+ * @param {number} numberInput to check.
+ * @return {Boolean}
  */
-function isOdd(number) {
-  if (number % 2 === 1) {
-    return number;
+function isOdd(numberInput) {
+  if (numberInput % 2 === 1) {
+    return true;
   }
-  return 0;
+  return false;
 }
 
 /**
  * Check whether number can be divided by 3 without remainder.
- * @param {number} number to check.
- * @return {number} number if true, 0 if false.
+ * @param {number} numberInput to check.
+ * @return {Boolean}
  */
-function isFactorThree(number) {
-  if (number % 3 === 0) {
-    return number;
+function isFactorThree(numberInput) {
+  if (numberInput % 3 === 0) {
+    return true;
   }
-  return 0;
+  return false;
 }
 
 /**
  * Check whether number is Even and Positive.
- * @param {number} number to check.
- * @return {number} number if true, 0 if false.
+ * @param {number} numberInput to check.
+ * @return {Boolean}
  */
-function isPositiveEven(number) {
-  if (number % 2 === 0 && number > 0) {
-    return number;
+function isPositiveEven(numberInput) {
+  if (numberInput % 2 === 0 && numberInput > 0) {
+    return true;
   }
-  return 0;
+  return false;
 }
 
 /**
@@ -64,7 +64,9 @@ function calculateSumArrayElements(arrayGiven, conditionFunction) {
   }
 
   for (let i = 0; i < arrayGiven.length; i++) {
-    sum += conditionFunction(arrayGiven[i]);
+    if (conditionFunction(arrayGiven[i])) {
+      sum += arrayGiven[i];
+    }
   }
   return sum;
 }
@@ -82,9 +84,13 @@ function calculateSumArrayElementsRecursion(arrayGiven, conditionFunction) {
   if (conditionFunction === undefined) {
     conditionFunction = (x) => x;
   }
-  return conditionFunction(arrayGiven[0]) +
+  if (conditionFunction(arrayGiven[0])) {
+    return arrayGiven[0] +
         calculateSumArrayElementsRecursion(
             arrayGiven.splice(1, arrayGiven.length-1), conditionFunction);
+  }
+  return calculateSumArrayElementsRecursion(
+      arrayGiven.splice(1, arrayGiven.length-1), conditionFunction);
 }
 
 /**
