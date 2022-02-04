@@ -6,19 +6,8 @@
  * @return {Boolean}
  */
 function validateNumber(numberInput) {
-  if (+numberInput !== numberInput) {
-    return false;
-  }
-
-  if (numberInput < 0) {
-    return false;
-  }
-
-  if (numberInput !== Math.trunc(numberInput)) {
-    return false;
-  }
-
-  return true;
+  return +numberInput === numberInput &&
+          numberInput >= 0 && numberInput === Math.trunc(numberInput);
 }
 
 /**
@@ -88,9 +77,11 @@ const memoize = (functionToMemoize) => {
   const cache = {};
   return (...args) => {
     const firstArgument = args[0];
+
     if (firstArgument in cache) {
       return cache[firstArgument];
     }
+
     cache[firstArgument] = functionToMemoize(firstArgument);
     return cache[firstArgument];
   };

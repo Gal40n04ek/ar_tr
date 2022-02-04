@@ -6,11 +6,7 @@
  * @return {string} sentence - that contains only small letters.
  */
 function castString(sentence) {
-  sentence = sentence.trim()
-      .replace(/,/g, '')
-      .replace(/\s+/g, ' ')
-      .toLowerCase();
-  return sentence;
+  return sentence.trim().replace(/,/g, '').replace(/\s+/g, ' ').toLowerCase();
 }
 
 /**
@@ -45,9 +41,7 @@ function arrangeWords(wordSet) {
  * @return {Object}
  */
 function countWordRepeat(sentence) {
-  const simpleSentence = castString(sentence);
-  const distinctWordSet = arrangeWords(separateWords(simpleSentence));
-  return distinctWordSet;
+  return arrangeWords(separateWords(castString(sentence)));
 }
 
 /**

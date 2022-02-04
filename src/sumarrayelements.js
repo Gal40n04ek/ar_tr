@@ -6,10 +6,7 @@
  * @return {Boolean}
  */
 function isEven(numberInput) {
-  if (numberInput % 2 === 0) {
-    return true;
-  }
-  return false;
+  return numberInput % 2 === 0;
 }
 
 /**
@@ -18,10 +15,7 @@ function isEven(numberInput) {
  * @return {Boolean}
  */
 function isOdd(numberInput) {
-  if (numberInput % 2 === 1) {
-    return true;
-  }
-  return false;
+  return numberInput % 2 === 1;
 }
 
 /**
@@ -30,10 +24,7 @@ function isOdd(numberInput) {
  * @return {Boolean}
  */
 function isFactorThree(numberInput) {
-  if (numberInput % 3 === 0) {
-    return true;
-  }
-  return false;
+  return numberInput % 3 === 0;
 }
 
 /**
@@ -42,10 +33,7 @@ function isFactorThree(numberInput) {
  * @return {Boolean}
  */
 function isPositiveEven(numberInput) {
-  if (numberInput % 2 === 0 && numberInput > 0) {
-    return true;
-  }
-  return false;
+  return numberInput % 2 === 0 && numberInput > 0;
 }
 
 /**

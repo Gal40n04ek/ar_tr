@@ -6,10 +6,7 @@
  * @return {Boolean}
  */
 function isEqualZero(number) {
-  if (number === 0) {
-    return true;
-  }
-  return false;
+  return number === 0;
 }
 
 /**
@@ -18,10 +15,7 @@ function isEqualZero(number) {
  * @return {Boolean}
  */
 function isNegative(number) {
-  if (number < 0) {
-    return true;
-  }
-  return false;
+  return number < 0;
 }
 
 /**
@@ -30,10 +24,7 @@ function isNegative(number) {
  * @return {Boolean}
  */
 function isPositive(number) {
-  if (number > 0) {
-    return true;
-  }
-  return false;
+  return number > 0;
 }
 
 /**

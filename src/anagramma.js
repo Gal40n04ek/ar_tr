@@ -6,18 +6,7 @@
  * @return {string} stringToChange - that contains only small letters.
  */
 function castString(stringToChange) {
-  stringToChange = stringToChange.trim().replace(/[^a-z]/gi, '').toLowerCase();
-  return stringToChange;
-}
-
-/**
- * Check whether both strings have the same lengths.
- * @param {string} firstString - edited string.
- * @param {string} secondString - edited compared string.
- * @return {Boolean}.
- */
-function compareStringLengths(firstString, secondString) {
-  return firstString.length == secondString.length;
+  return stringToChange.trim().replace(/[^a-z]/gi, '').toLowerCase();
 }
 
 /**
@@ -28,7 +17,7 @@ function compareStringLengths(firstString, secondString) {
  */
 function compareCharsNumber(firstString, secondString) {
   for (const char of firstString) {
-    if (countCharRepeat(char, firstString) !=
+    if (countCharRepeat(char, firstString) !==
         countCharRepeat(char, secondString)) {
       return false;
     }
@@ -52,8 +41,8 @@ function compareCharsNumber(firstString, secondString) {
 function countCharRepeat(symbol, stringToCheck) {
   let count = 0;
   for (let i = 0; i < stringToCheck.length; i++) {
-    if (stringToCheck[i] == symbol) {
-      count = count +1;
+    if (stringToCheck[i] === symbol) {
+      count++;
     }
   }
   return count;
@@ -68,7 +57,7 @@ function countCharRepeat(symbol, stringToCheck) {
 function isAnagramma(firstString, secondString) {
   const baseString = castString(firstString);
   const comparedString = castString(secondString);
-  if (!compareStringLengths(baseString, comparedString)) {
+  if (baseString.length !== comparedString.length) {
     return false;
   }
   return compareCharsNumber(baseString, comparedString);

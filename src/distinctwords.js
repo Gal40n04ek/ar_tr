@@ -6,11 +6,7 @@
  * @return {string} sentence - that contains only small letters.
  */
 function castString(sentence) {
-  sentence = sentence.trim()
-      .replace(/,/g, '')
-      .replace(/\s+/g, ' ')
-      .toLowerCase();
-  return sentence;
+  return sentence.trim().replace(/,/g, '').replace(/\s+/g, ' ').toLowerCase();
 }
 
 /**
@@ -43,9 +39,7 @@ function uniqualizeWords(wordSet) {
  * @return {number}
  */
 function countDistinctWords(sentence) {
-  const simpleSentence = castString(sentence);
-  const distinctWordSet = uniqualizeWords(separateWords(simpleSentence));
-  return distinctWordSet.length;
+  return uniqualizeWords(separateWords(castString(sentence))).length;
 }
 
 /**
