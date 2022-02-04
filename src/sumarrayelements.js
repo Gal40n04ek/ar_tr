@@ -38,22 +38,27 @@ function isPositiveEven(numberInput) {
 
 /**
  * Calculate the sum of array elements that satisfy condition.
- * @param {array} arrayGiven - the given array.
+ * @param {array} numberArray - the given array.
  * @param {*} conditionFunction - callback function - condition to satisfy.
  * @return {number} sum.
  */
-function calculateSumArrayElements(arrayGiven, conditionFunction) {
-  if (arrayGiven.length === 0) {
+function calculateSumArrayElements(numberArray, conditionFunction) {
+  if (numberArray.length === 0) {
     return 0;
   }
   let sum = 0;
-  if (conditionFunction === undefined) {
-    conditionFunction = (x) => x;
+
+  if (conditionFunction === undefined ||
+    typeof conditionFunction !== 'function') {
+    for (let i = 0; i < numberArray.length; i++) {
+      sum += numberArray[i];
+    }
+    return sum;
   }
 
-  for (let i = 0; i < arrayGiven.length; i++) {
-    if (conditionFunction(arrayGiven[i])) {
-      sum += arrayGiven[i];
+  for (let i = 0; i < numberArray.length; i++) {
+    if (conditionFunction(numberArray[i])) {
+      sum += numberArray[i];
     }
   }
   return sum;
@@ -61,24 +66,28 @@ function calculateSumArrayElements(arrayGiven, conditionFunction) {
 
 /**
  * Calculate the sum of array elements that satisfy condition. Recursion method.
- * @param {array} arrayGiven - the given array.
+ * @param {array} numberArray - the given array.
  * @param {*} conditionFunction - callback function - condition to satisfy.
  * @return {number} sum.
  */
-function calculateSumArrayElementsRecursion(arrayGiven, conditionFunction) {
-  if (arrayGiven.length === 0) {
+function calculateSumArrayElementsRecursion(numberArray, conditionFunction) {
+  if (numberArray.length === 0) {
     return 0;
   }
-  if (conditionFunction === undefined) {
-    conditionFunction = (x) => x;
+
+  if (conditionFunction === undefined ||
+    typeof conditionFunction !== 'function') {
+    return numberArray[0] + calculateSumArrayElementsRecursion(
+        numberArray.splice(1, numberArray.length-1));
   }
-  if (conditionFunction(arrayGiven[0])) {
-    return arrayGiven[0] +
+
+  if (conditionFunction(numberArray[0])) {
+    return numberArray[0] +
         calculateSumArrayElementsRecursion(
-            arrayGiven.splice(1, arrayGiven.length-1), conditionFunction);
+            numberArray.splice(1, numberArray.length-1), conditionFunction);
   }
   return calculateSumArrayElementsRecursion(
-      arrayGiven.splice(1, arrayGiven.length-1), conditionFunction);
+      numberArray.splice(1, numberArray.length-1), conditionFunction);
 }
 
 /**

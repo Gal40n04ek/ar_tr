@@ -2,48 +2,48 @@
 
 /**
  * Check whether number is equal to zero.
- * @param {number} number to check
+ * @param {number} numberInput to check
  * @return {Boolean}
  */
-function isEqualZero(number) {
-  return number === 0;
+function isEqualZero(numberInput) {
+  return numberInput === 0;
 }
 
 /**
  * Check whether number is Negative.
- * @param {number} number to check
+ * @param {number} numberInput to check
  * @return {Boolean}
  */
-function isNegative(number) {
-  return number < 0;
+function isNegative(numberInput) {
+  return numberInput < 0;
 }
 
 /**
  * Check whether number is Positive.
- * @param {number} number to check
+ * @param {number} numberInput to check
  * @return {Boolean}
  */
-function isPositive(number) {
-  return number > 0;
+function isPositive(numberInput) {
+  return numberInput > 0;
 }
 
 /**
  * Check whether number is Prime.
- * @param {number} number to check
+ * @param {number} numberInput to check
  * @return {Boolean}
  */
-function isPrime(number) {
-  if (number === 1) {
-    return false; // Number 1 is neither prime, nor composite
+function isPrime(numberInput) {
+  if (numberInput === 1 || numberInput < 0 ||
+    Math.trunc(numberInput) !== numberInput) {
+    return false;
   }
-  if (number < 0 || Math.trunc(number) !== number) {
-    return false; // The set of prime numbers - is a subset of natural numbers
+
+  if (numberInput === 2) {
+    return true;
   }
-  if (number === 2) {
-    return true; // Number 2 is prime
-  }
-  for (let i = 2; i <= Math.trunc(Math.sqrt(number)); i++) {
-    if (number % i === 0) {
+
+  for (let i = 2; i <= Math.trunc(Math.sqrt(numberInput)); i++) {
+    if (numberInput % i === 0) {
       return false;
     }
   }
@@ -52,24 +52,25 @@ function isPrime(number) {
 
 /**
  * Count quantity of elements in the given array that satisfy condition.
- * @param {array} arrayGiven - any array of numbers.
+ * @param {array} numberArray - any array of numbers.
  * @param {*} conditionFunction - callback function - condition.
  * @return {number} - quantity of elements.
  */
-function countArrayElements(arrayGiven, conditionFunction) {
-  if (arrayGiven.length === 0) {
+function countArrayElements(numberArray, conditionFunction) {
+  if (numberArray.length === 0) {
     return 0;
   }
-  let sum = 0;
-  if (conditionFunction === undefined) {
-    conditionFunction = (x) => 1;
+  let summaryQuantity = 0;
+  if (conditionFunction === undefined ||
+    typeof conditionFunction !== 'function') {
+    return numberArray.length;
   }
-  for (let i = 0; i < arrayGiven.length; i++) {
-    if (conditionFunction(arrayGiven[i])) {
-      sum += 1;
+  for (let i = 0; i < numberArray.length; i++) {
+    if (conditionFunction(numberArray[i])) {
+      summaryQuantity++;
     }
   }
-  return sum;
+  return summaryQuantity;
 }
 
 /**

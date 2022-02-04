@@ -5,14 +5,6 @@
  */
 class Shape {
   /**
-   * Shape should have sides: height.
-   * @param {number} height
-   */
-  constructor(height) {
-    this.height = height;
-  }
-
-  /**
    * get area of the shape.
    */
   get area() {
@@ -24,7 +16,7 @@ class Shape {
    * @return {number}
    */
   calculateArea() {
-    return this.height * this.height;
+    return 0;
   }
 }
 
@@ -41,8 +33,8 @@ class Rectangle extends Shape {
     if (+ height !== height || + width !== width || height <= 0 || width <= 0) {
       throw new Error('The Height and Width must be Non-negative, numerical');
     }
-
-    super(height);
+    super();
+    this.height = height;
     this.width = width;
   }
 
@@ -79,7 +71,8 @@ class Triangle extends Shape {
       throw new Error('The triangle condition shoul be satisfied');
     }
 
-    super(firstSide);
+    super();
+    this.firstSide = firstSide;
     this.secondSide = secondSide;
     this.thirdSide = thirdSide;
   }
@@ -96,7 +89,7 @@ class Triangle extends Shape {
    * @return {number} perimeter
    */
   calculatePerimeter() {
-    return this.height + this.secondSide + this.thirdSide;
+    return this.firstSide + this.secondSide + this.thirdSide;
   }
 
   /**
@@ -106,7 +99,7 @@ class Triangle extends Shape {
    */
   calculateArea() {
     const halfPerimeter = this.perimeter / 2;
-    return + Math.sqrt(halfPerimeter * (halfPerimeter - this.height) *
+    return + Math.sqrt(halfPerimeter * (halfPerimeter - this.firstSide) *
             (halfPerimeter - this.secondSide) *
             (halfPerimeter - this.thirdSide)).toFixed(2);
   }
@@ -125,7 +118,8 @@ class Circle extends Shape {
       throw new Error('Radius of the circle must be Non-negative, numerical');
     }
 
-    super(radius);
+    super();
+    this.radius = radius;
   }
 
   /**
@@ -134,7 +128,7 @@ class Circle extends Shape {
    * @return {number}
    */
   calculateArea() {
-    return + (Math.PI * (this.height ** 2)).toFixed(2);
+    return + (Math.PI * (this.radius ** 2)).toFixed(2);
   }
 }
 
