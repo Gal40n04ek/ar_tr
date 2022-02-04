@@ -38,6 +38,7 @@ function countDigitsRecursive(numberInput) {
 
 /**
  * Add one more number unit by multiplying the input by 10.
+ * Move point in a float number one position in a right direction.
  * @param {number} numberFloat - any number to increase.
  * @return {number}
  */
